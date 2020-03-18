@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/fatih/color"
-	"github.com/gpestana/kapacitor-unit/cli"
-	"github.com/gpestana/kapacitor-unit/io"
-	"github.com/gpestana/kapacitor-unit/task"
-	"github.com/gpestana/kapacitor-unit/test"
+	"github.com/j3ffrw/kapacitor-unit/cli"
+	"github.com/j3ffrw/kapacitor-unit/io"
+	"github.com/j3ffrw/kapacitor-unit/task"
+	"github.com/j3ffrw/kapacitor-unit/test"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
@@ -35,7 +35,7 @@ func main() {
 
 	// Validates, runs tests in series and print results
 	for _, t := range tests {
-		log.Println("Running Test Name: ", t.Name)
+		log.Println("Running TEST: ", t.Name)
 
 		if err := t.Validate(); err != nil {
 			log.Println(err)

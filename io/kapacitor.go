@@ -147,6 +147,7 @@ func (k Kapacitor) Data(data []string, db string, rp string, clock string) error
 			return err
 		}
 		glog.Info("DEBUG:: Kapacitor added data: ", d)
+
 	}
 	return nil
 }
