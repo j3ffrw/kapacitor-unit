@@ -144,7 +144,7 @@ func (k Kapacitor) Data(data []string, db string, rp string, clock string) error
 			curTime, _ := strconv.Atoi(line[2])
 			delay = curTime - prevTime
 
-			glog.Info("DEBUG:: sleep: ", time.Duration(delay)*time.Second)
+			glog.Info("DEBUG:: sleep: ", time.Duration(delay)/time.Second)
 			time.Sleep(time.Duration(delay) * time.Nanosecond)
 			prevTime = curTime
 		}
