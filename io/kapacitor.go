@@ -132,13 +132,6 @@ func (k Kapacitor) Data(data []string, db string, rp string, clock string) error
 	delay := 0
 	prevTime := 9223372036854775806 //max valid timestamp
 	for _, d := range data {
-		_, err := k.Client.Post(u, "application/x-www-form-urlencoded",
-			bytes.NewBuffer([]byte(d)))
-		if err != nil {
-			return err
-		}
-		glog.Info("DEBUG:: Kapacitor added data: ", d)
-
 		if clock == "real" {
 			line := strings.Split(d, " ")
 			curTime, _ := strconv.Atoi(line[2])
@@ -148,6 +141,13 @@ func (k Kapacitor) Data(data []string, db string, rp string, clock string) error
 			time.Sleep(time.Duration(delay) * time.Nanosecond)
 			prevTime = curTime
 		}
+		_, err := k.Client.Post(u, "application/x-www-form-urlencoded",
+			bytes.NewBuffer([]byte(d)))
+		if err != nil {
+			return err
+		}
+		glog.Info("DEBUG:: Kapacitor added data: ", d)
+
 	}
 	return nil
 }
